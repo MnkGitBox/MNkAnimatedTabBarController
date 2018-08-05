@@ -22,7 +22,7 @@ pod 'MNkAnimatedTabBarController'
 
 ## Author
 
-MnkGitBox, malith.mnk93@gmail.com
+Malith Nadeeshan, malith.mnk93@gmail.com
 
 ## License
 
