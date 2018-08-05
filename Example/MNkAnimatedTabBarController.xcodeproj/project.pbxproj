@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		25BF38DD41D35D3E88FA494B /* Pods-MNkAnimatedTabBarController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNkAnimatedTabBarController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MNkAnimatedTabBarController_Tests/Pods-MNkAnimatedTabBarController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		335301C163F54772DE130594 /* Pods-MNkAnimatedTabBarController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNkAnimatedTabBarController_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MNkAnimatedTabBarController_Tests/Pods-MNkAnimatedTabBarController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		49873D5D20A6E3251F256C1F /* MNkAnimatedTabBarController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = MNkAnimatedTabBarController.podspec; path = ../MNkAnimatedTabBarController.podspec; sourceTree = "<group>"; };
+		49873D5D20A6E3251F256C1F /* MNkAnimatedTabBarController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MNkAnimatedTabBarController.podspec; path = ../MNkAnimatedTabBarController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4E1BA8884D7C5C77608B3665 /* Pods_MNkAnimatedTabBarController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNkAnimatedTabBarController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* MNkAnimatedTabBarController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNkAnimatedTabBarController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,9 +44,9 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7EEE870005113BAB25D98397 /* Pods-MNkAnimatedTabBarController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNkAnimatedTabBarController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MNkAnimatedTabBarController_Example/Pods-MNkAnimatedTabBarController_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C9244976EE5C27E291BBE108 /* Pods_MNkAnimatedTabBarController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNkAnimatedTabBarController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E20DE23AFC092D77E5F2EA65 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E20DE23AFC092D77E5F2EA65 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E6FB774B9E4D5B154FACE0E9 /* Pods-MNkAnimatedTabBarController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNkAnimatedTabBarController_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MNkAnimatedTabBarController_Example/Pods-MNkAnimatedTabBarController_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		FCFD81F016892D84EDD6EB1E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		FCFD81F016892D84EDD6EB1E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +212,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = SGWDF4729Q;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -305,10 +306,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MNkAnimatedTabBarController_Example/Pods-MNkAnimatedTabBarController_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MNkAnimatedTabBarController/MNkAnimatedTabBarController.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MNkAnimatedTabBarController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -469,7 +472,9 @@
 			baseConfigurationReference = E6FB774B9E4D5B154FACE0E9 /* Pods-MNkAnimatedTabBarController_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SGWDF4729Q;
 				INFOPLIST_FILE = MNkAnimatedTabBarController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -484,7 +489,9 @@
 			baseConfigurationReference = 7EEE870005113BAB25D98397 /* Pods-MNkAnimatedTabBarController_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SGWDF4729Q;
 				INFOPLIST_FILE = MNkAnimatedTabBarController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

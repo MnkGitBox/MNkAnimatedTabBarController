@@ -1,0 +1,23 @@
+PODS:
+  - lottie-ios (2.5.0)
+  - MNkAnimatedTabBarController (0.1.0):
+    - lottie-ios
+
+DEPENDENCIES:
+  - MNkAnimatedTabBarController (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - lottie-ios
+
+EXTERNAL SOURCES:
+  MNkAnimatedTabBarController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
+  MNkAnimatedTabBarController: f363c630909c1b46276931cfbea7b84e75e81742
+
+PODFILE CHECKSUM: c9b5e02bc7db28bed3b2a81a3f4ddbd37f480124
+
+COCOAPODS: 1.5.3

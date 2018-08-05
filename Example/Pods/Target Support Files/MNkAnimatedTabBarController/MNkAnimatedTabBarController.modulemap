@@ -1,0 +1,6 @@
+framework module MNkAnimatedTabBarController {
+  umbrella header "MNkAnimatedTabBarController-umbrella.h"
+
+  export *
+  module * { export * }
+}

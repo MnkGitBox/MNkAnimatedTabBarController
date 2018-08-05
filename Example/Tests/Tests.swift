@@ -1,5 +1,5 @@
 import XCTest
-import MNkAnimatedTabBarController
+//import MNkAnimatedTabBarController
 
 class Tests: XCTestCase {
     
