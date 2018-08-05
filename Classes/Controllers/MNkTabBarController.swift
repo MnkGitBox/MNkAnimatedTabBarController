@@ -6,14 +6,14 @@
 //
 
 
-//         /\/\/\             /\/\/\
-//        /\/\/\/\           /\/\/\/\
-//       /\/\/\/\/\         /\/\/\/\/\
-//      /\/\/  \/\/\       /\/\/  \/\/\
-//     /\/\/    \/\/\     /\/\/    \/\/\
-//    /\/\/      \/\/\   /\/\/
-//   /\/\/        \/\/\ /\/\/
-//  /\/\/          \/\/ \/\/
+//        |\/\            /\/|
+//        |\/\/\         /\/\|
+//        |\/\/\/\    /\/\/\/|
+//        |\/\/\/\/\_/\/\/\/\|
+//        |\/\  /\/\_/\/  \/\|
+//        |\/\   \/\_/\    /\|
+
+
 
 import UIKit
 
@@ -22,7 +22,7 @@ open class MNkTabBarController: UIViewController {
     public var selectedVCIndex:Int = 0{
         willSet{
             guard selectedVCIndex != newValue else{return}
-            removeCurrent(mnkTabBarViewControllers[selectedVCIndex])
+            removeAllChilds()
             setToCurrent(mnkTabBarViewControllers[newValue])
         }
     }
@@ -132,14 +132,22 @@ extension UIViewController{
     //MARK:- ADD MAIN VIEW CONTROLLERS AS CHILD VIEW CONTROLLERS TO MAIN VIEW CONTROLLER
     func addControllerComp(_ controller:UIViewController,to container:UIView){
         container.addSubview(controller.view)
+        controller.view.frame = container.bounds
         self.addChildViewController(controller)
         controller.didMove(toParentViewController: self)
     }
     
     func removeFromParentVC(){
+        self.dismiss(animated: false, completion: nil)
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
         self.willMove(toParentViewController: nil)
+    }
+    
+    func removeAllChilds(){
+        for child in childViewControllers{
+            child.removeFromParentVC()
+        }
     }
 }
 
