@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MNkAnimatedTabBarController_Example' do
+  pod 'MNkAnimatedTabBarController', :path => '../'
+
+  target 'MNkAnimatedTabBarController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
