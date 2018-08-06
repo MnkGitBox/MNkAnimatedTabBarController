@@ -53,7 +53,7 @@ public class MNkTabBarButton: UIView {
     private lazy var pageTitleLabel:UILabel = {
         let lbl = UILabel()
         lbl.text = self.title
-        lbl.font = UIFont.systemFont(ofSize: 12)
+        lbl.font = UIFont.systemFont(ofSize: 11)
         lbl.textColor = self.activeTintColor
         lbl.adjustsFontSizeToFitWidth = true
         lbl.isUserInteractionEnabled = true
@@ -74,7 +74,7 @@ public class MNkTabBarButton: UIView {
     
     private let stackView:UIStackView = {
         let sv = UIStackView()
-        sv.alignment = .fill
+        sv.alignment = .center
         sv.distribution = .fill
         sv.spacing = 2
         sv.axis = .vertical
@@ -132,6 +132,7 @@ public class MNkTabBarButton: UIView {
     public init(_ type:Types){
         super.init(frame: .zero)
         self.type = type
+        doInitWork()
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -142,7 +143,7 @@ public class MNkTabBarButton: UIView {
     private func doInitWork(){
         insertAndLayoutViews()
         addGestureRecognizer(tapGesture)
-        
+        backgroundColor = .clear
         isUserInteractionEnabled = true
     }
     
@@ -153,6 +154,11 @@ public class MNkTabBarButton: UIView {
             animationView = LOTAnimationView(name: animationName)
             animationView?.contentMode = .scaleAspectFit
             animationView?.loopAnimation = false
+            
+            animationView?.translatesAutoresizingMaskIntoConstraints = false
+            animationView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
+            animationView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+            
             stackView.insertArrangedSubview(animationView!, at: 0)
             
         case .image:
@@ -164,6 +170,10 @@ public class MNkTabBarButton: UIView {
             imageView?.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
             imageView?.tintColor = tintColor
             imageView?.image = image.withRenderingMode(.alwaysTemplate)
+            
+            imageView?.translatesAutoresizingMaskIntoConstraints = false
+            imageView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
+            imageView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
             
             stackView.insertArrangedSubview(imageView!, at: 0)
             

@@ -19,6 +19,23 @@ import UIKit
 
 open class MNkTabBarController: UIViewController {
     
+    public var tabbarHeight:CGFloat{
+        return statusBarHeight == 20 ? 55 : 80
+    }
+    
+    public var containerFrame:CGRect{
+        return CGRect(origin: .zero, size: CGSize(width: self.view.bounds.size.width,
+                                                  height: self.view.bounds.size.height - tabbarHeight))
+    }
+    
+    private var tabBarFrame:CGRect{
+        let origin = CGPoint(x: 0,
+                             y: containerFrame.size.height)
+        return CGRect(origin: origin,
+                      size: CGSize(width: self.view.bounds.size.width,
+                                   height: tabbarHeight))
+    }
+    
     public var selectedVCIndex:Int = 0{
         willSet{
             guard selectedVCIndex != newValue else{return}
@@ -36,14 +53,12 @@ open class MNkTabBarController: UIViewController {
     }
     
     private lazy var container:TabPageContainer = {
-        let con = TabPageContainer()
-        con.translatesAutoresizingMaskIntoConstraints = false
+        let con = TabPageContainer(frame: containerFrame)
         return con
     }()
     
     public lazy var tabBar:MNkTabBar = {
-        let con = MNkTabBar()
-        con.translatesAutoresizingMaskIntoConstraints = false
+        let con = MNkTabBar(frame: tabBarFrame)
         return con
     }()
     
@@ -58,28 +73,15 @@ open class MNkTabBarController: UIViewController {
     }
     
     private func doInitialWork(){
-        
+        view.backgroundColor = .white
         insertAndLayoutSubviews()
         setSelectedVC(at: 0)
     }
     
     //MARK:- LAYOUT SUBVIEWS OF VIEW CONTROLLER
     private func insertAndLayoutSubviews(){
-        
         view.addSubview(container)
         view.addSubview(tabBar)
-        
-        let tabbarHeight:CGFloat = statusBarHeight == 20 ? 60.0 : 80
-        
-        NSLayoutConstraint.activate([tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     tabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                                     tabBar.heightAnchor.constraint(equalToConstant: tabbarHeight)])
-        
-        NSLayoutConstraint.activate([container.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     container.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     container.topAnchor.constraint(equalTo: view.topAnchor),
-                                     container.bottomAnchor.constraint(equalTo: tabBar.topAnchor)])
     }
     
     //    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\\/\/\/\/\/\/\\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\
@@ -131,17 +133,21 @@ extension MNkTabBarController:MNkButtonDelegate{
 extension UIViewController{
     //MARK:- ADD MAIN VIEW CONTROLLERS AS CHILD VIEW CONTROLLERS TO MAIN VIEW CONTROLLER
     func addControllerComp(_ controller:UIViewController,to container:UIView){
+        
+        addChildViewController(controller)
+        
         container.addSubview(controller.view)
         controller.view.frame = container.bounds
-        self.addChildViewController(controller)
+        controller.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        
         controller.didMove(toParentViewController: self)
     }
     
     func removeFromParentVC(){
         self.dismiss(animated: false, completion: nil)
+        self.willMove(toParentViewController: nil)
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
-        self.willMove(toParentViewController: nil)
     }
     
     func removeAllChilds(){
@@ -149,7 +155,7 @@ extension UIViewController{
             child.removeFromParentVC()
         }
     }
+    
 }
-
 
 
