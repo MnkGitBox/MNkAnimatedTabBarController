@@ -138,9 +138,7 @@ extension UIViewController{
     }
     
     func removeFromParentVC(){
-        if self.isBeingPresented{
-            self.dismiss(animated: false, completion: nil)
-        }
+        self.dismiss(animated: false, completion: nil)
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
         self.willMove(toParentViewController: nil)
