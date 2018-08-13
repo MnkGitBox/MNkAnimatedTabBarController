@@ -22,8 +22,16 @@ public class MNkTabBar: UIView {
         }
     }
     
-    public var tintColorButtonClicked:UIColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-    public var tintColorButtonUnClicked:UIColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
+    public var tintColorButtonClicked:UIColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1){
+        didSet{
+            setColor()
+        }
+    }
+    public var tintColorButtonUnClicked:UIColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1){
+        didSet{
+            setColor()
+        }
+    }
     
     private lazy var shadowView:UIView = {
         let v = UIView()
@@ -93,6 +101,14 @@ public class MNkTabBar: UIView {
             _button.setTintColor(tintColorButtonClicked, for: .activate)
             _button.setTintColor(tintColorButtonUnClicked, for: .deActivate)
             _button.isActive = activate
+        }
+    }
+    
+    private func setColor(){
+        for view in buttonStackView.arrangedSubviews{
+            guard let _button = view as? MNkTabBarButton else{continue}
+            _button.setTintColor(tintColorButtonClicked, for: .activate)
+            _button.setTintColor(tintColorButtonUnClicked, for: .deActivate)
         }
     }
     

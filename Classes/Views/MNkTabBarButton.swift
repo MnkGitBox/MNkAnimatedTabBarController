@@ -8,6 +8,8 @@
 import UIKit
 import Lottie
 
+let tabBarButtonHeight:CGFloat = 25
+
 protocol MNkButtonDelegate{
     func userDidChagedTap(buttonAt index:Int)
 }
@@ -19,8 +21,9 @@ public class MNkTabBarButton: UIView {
     var type:Types = .image
     
     var isActive:Bool = false{
-        didSet{
-            setActiveState(isActive)
+        willSet{
+            guard isActive != newValue else {return}
+            setActiveState(newValue)
         }
     }
     
@@ -39,7 +42,7 @@ public class MNkTabBarButton: UIView {
     private var activeTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     private var deActiveTintColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
     
-    
+    var isTapped:Bool = false
     
     private let container:UIView = {
         let view = UIView()
@@ -54,7 +57,7 @@ public class MNkTabBarButton: UIView {
         let lbl = UILabel()
         lbl.text = self.title
         lbl.font = UIFont.systemFont(ofSize: 11)
-        lbl.textColor = self.activeTintColor
+        lbl.textColor = self.deActiveTintColor
         lbl.adjustsFontSizeToFitWidth = true
         lbl.isUserInteractionEnabled = true
         lbl.textAlignment = .center
@@ -156,8 +159,8 @@ public class MNkTabBarButton: UIView {
             animationView?.loopAnimation = false
             
             animationView?.translatesAutoresizingMaskIntoConstraints = false
-            animationView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
-            animationView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+            animationView?.heightAnchor.constraint(equalToConstant: tabBarButtonHeight).isActive = true
+            animationView?.widthAnchor.constraint(equalToConstant: tabBarButtonHeight).isActive = true
             
             stackView.insertArrangedSubview(animationView!, at: 0)
             
@@ -172,8 +175,8 @@ public class MNkTabBarButton: UIView {
             imageView?.image = image.withRenderingMode(.alwaysTemplate)
             
             imageView?.translatesAutoresizingMaskIntoConstraints = false
-            imageView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
-            imageView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+            imageView?.heightAnchor.constraint(equalToConstant: tabBarButtonHeight).isActive = true
+            imageView?.widthAnchor.constraint(equalToConstant: tabBarButtonHeight).isActive = true
             
             stackView.insertArrangedSubview(imageView!, at: 0)
             
