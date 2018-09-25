@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		827467C2215A9BAC003573BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827467C1215A9BAC003573BD /* HomeViewController.swift */; };
+		827467C4215A9BD3003573BD /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827467C3215A9BD3003573BD /* TabBarController.swift */; };
+		827467C7215A9C32003573BD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827467C6215A9C32003573BD /* ListViewController.swift */; };
+		827467C9215A9C77003573BD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827467C8215A9C77003573BD /* AboutViewController.swift */; };
+		827467CB215AA171003573BD /* ani_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 827467CA215AA171003573BD /* ani_categories.json */; };
+		827467CE215AA95D003573BD /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827467CD215AA95D003573BD /* HomeDetailViewController.swift */; };
 		9C8F52AAAE75D6F125155209 /* Pods_MNkAnimatedTabBarController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9244976EE5C27E291BBE108 /* Pods_MNkAnimatedTabBarController_Example.framework */; };
 		BBAC4920FDAE13FD1C77B92D /* Pods_MNkAnimatedTabBarController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1BA8884D7C5C77608B3665 /* Pods_MNkAnimatedTabBarController_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -35,14 +39,18 @@
 		607FACD01AFB9204008FA782 /* MNkAnimatedTabBarController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNkAnimatedTabBarController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* MNkAnimatedTabBarController_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNkAnimatedTabBarController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7EEE870005113BAB25D98397 /* Pods-MNkAnimatedTabBarController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNkAnimatedTabBarController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MNkAnimatedTabBarController_Example/Pods-MNkAnimatedTabBarController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		827467C1215A9BAC003573BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		827467C3215A9BD3003573BD /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		827467C6215A9C32003573BD /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		827467C8215A9C77003573BD /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		827467CA215AA171003573BD /* ani_categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ani_categories.json; sourceTree = "<group>"; };
+		827467CD215AA95D003573BD /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		C9244976EE5C27E291BBE108 /* Pods_MNkAnimatedTabBarController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNkAnimatedTabBarController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20DE23AFC092D77E5F2EA65 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E6FB774B9E4D5B154FACE0E9 /* Pods-MNkAnimatedTabBarController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNkAnimatedTabBarController_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MNkAnimatedTabBarController_Example/Pods-MNkAnimatedTabBarController_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,10 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				827467C3215A9BD3003573BD /* TabBarController.swift */,
+				827467C5215A9BF8003573BD /* Tab view controllers */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for MNkAnimatedTabBarController";
@@ -127,6 +133,9 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				827467CC215AA17B003573BD /* Animated_ico */,
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -157,6 +166,25 @@
 				FCFD81F016892D84EDD6EB1E /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		827467C5215A9BF8003573BD /* Tab view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				827467C1215A9BAC003573BD /* HomeViewController.swift */,
+				827467C6215A9C32003573BD /* ListViewController.swift */,
+				827467C8215A9C77003573BD /* AboutViewController.swift */,
+				827467CD215AA95D003573BD /* HomeDetailViewController.swift */,
+			);
+			name = "Tab view controllers";
+			sourceTree = "<group>";
+		};
+		827467CC215AA17B003573BD /* Animated_ico */ = {
+			isa = PBXGroup;
+			children = (
+				827467CA215AA171003573BD /* ani_categories.json */,
+			);
+			name = Animated_ico;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,7 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				827467CB215AA171003573BD /* ani_categories.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -325,8 +353,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				827467CE215AA95D003573BD /* HomeDetailViewController.swift in Sources */,
+				827467C4215A9BD3003573BD /* TabBarController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				827467C7215A9C32003573BD /* ListViewController.swift in Sources */,
+				827467C9215A9C77003573BD /* AboutViewController.swift in Sources */,
+				827467C2215A9BAC003573BD /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,14 +381,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MNkAnimatedTabBarController'
-  s.version          = '0.1.5'
+  s.version          = '0.2.0'
   s.summary          = 'iOS Tab bar controller with animated button'
 
 # This description is used to generate tags and improve search results.

@@ -17,6 +17,9 @@
 
 import UIKit
 
+public var animatedTabBar:MNkTabBar?
+public var animatedTabBarController:MNkTabBarController?
+
 open class MNkTabBarController: UIViewController {
     
     public var tabbarHeight:CGFloat{
@@ -72,10 +75,19 @@ open class MNkTabBarController: UIViewController {
         doInitialWork()
     }
     
+    ///Set subview controllers and add animated or still images to tab bar
+    open func setSubViewControllers(){}
+    
     private func doInitialWork(){
         view.backgroundColor = .white
         insertAndLayoutSubviews()
+        
+        setSubViewControllers()
+        
         setSelectedVC(at: 0)
+        
+        animatedTabBar = tabBar
+        animatedTabBarController = self
     }
     
     //MARK:- LAYOUT SUBVIEWS OF VIEW CONTROLLER
@@ -120,6 +132,21 @@ open class MNkTabBarController: UIViewController {
     
     private func removeCurrent(_ vc:UIViewController){
         vc.removeFromParentVC()
+    }
+    
+    ///Set tab bar show or hide.
+    public func setTabBar(hide isHide:Bool,animated isAnimated:Bool){
+        
+        let _tabBarAnimatedOriginY = isHide ? (tabBarFrame.origin.y + tabBarFrame.size.height) : tabBarFrame.origin.y
+        let _containerFrame = isHide ? CGRect(origin: .zero, size: CGSize(width: containerFrame.size.width, height: containerFrame.size.height + tabBarFrame.size.height)) : containerFrame
+        
+        let animateTime:Double = isAnimated ? 0.4 : 0.0
+        
+        UIView.animate(withDuration: animateTime, delay: 0, options: .curveEaseOut, animations: {
+            self.tabBar.frame.origin.y = _tabBarAnimatedOriginY
+            self.container.frame = _containerFrame
+        }, completion: nil)
+        
     }
     
 }

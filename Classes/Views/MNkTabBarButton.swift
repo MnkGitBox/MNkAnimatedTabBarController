@@ -39,8 +39,8 @@ public class MNkTabBarButton: UIView {
         }
     }
     
-    private var activeTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-    private var deActiveTintColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
+     var activeTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+     var deActiveTintColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
     
     var isTapped:Bool = false
     
@@ -234,19 +234,9 @@ public class MNkTabBarButton: UIView {
         
     }
     
-    public func setTintColor(_ color:UIColor,for state:MNkControlState){
-        
-        switch state {
-        case .activate:
-            activeTintColor = color
-        case .deActivate:
-            deActiveTintColor = color
-        case .normal:
-            activeTintColor = color
-            deActiveTintColor = color
-        }
-        
+    ///Reload appearance of button after set new color eg.
+    func reloadButtonAppearance(){
+        setActiveState(self.isActive)
     }
-    
     
 }
