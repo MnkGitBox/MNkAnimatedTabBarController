@@ -22,6 +22,22 @@ public var animatedTabBarController:MNkTabBarController?
 
 open class MNkTabBarController: UIViewController {
     
+    ///User can scroll between tabs just swiping.
+    public var isScrollableTabs:Bool = true{
+        didSet{
+            
+            let delegate = isScrollableTabs ? tabPageController : nil
+            let dataSource = isScrollableTabs ? tabPageController : nil
+            
+            tabPageController.delegate = delegate
+            tabPageController.dataSource = dataSource
+        }
+    }
+    
+    ///Animate changing tabs when user tapped tab bar menu item
+    public var isSwitchBetweenTabsAnimatable:Bool = true
+
+    
     ///Frame of tab bar
     public var tabbarHeight:CGFloat{
         return statusBarHeight == 20 ? 55 : 80
@@ -75,6 +91,7 @@ open class MNkTabBarController: UIViewController {
         return tvc
     }()
     
+    
     public init(){
         super.init(nibName: nil, bundle: nil)
         doInitialWork()
@@ -125,7 +142,7 @@ open class MNkTabBarController: UIViewController {
         guard mnkTabBarViewControllers.count > index else{return}
         
         let navigationDirection:UIPageViewControllerNavigationDirection = tabPageController.beforeSelectedIndex > index ? UIPageViewControllerNavigationDirection.reverse : .forward
-        tabPageController.setViewControllers([tabPageController.tabPageViewControllers[index]], direction: navigationDirection, animated: true, completion: nil)
+        tabPageController.setViewControllers([tabPageController.tabPageViewControllers[index]], direction: navigationDirection, animated: isSwitchBetweenTabsAnimatable, completion: nil)
         tabPageController.beforeSelectedIndex = index
         
         tabBar.setActivateTabButton(at: index)

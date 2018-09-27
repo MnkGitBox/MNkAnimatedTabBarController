@@ -16,6 +16,7 @@ class MenuTabsViewController: UIPageViewController {
     var tabPageViewControllers:[UIViewController] = []
     var beforeSelectedIndex:Int = 0
     
+    
     var tabControllerDelegate:MenuTabsViewControllerDelegate?
     
     init(_ frame:CGRect,transitionStyle style: UIPageViewControllerTransitionStyle,navigationOrientation: UIPageViewControllerNavigationOrientation) {
@@ -32,7 +33,7 @@ class MenuTabsViewController: UIPageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let initialVc = tabPageViewControllers.first else{return}
-        setViewControllers([initialVc], direction: .forward, animated: true, completion: nil)
+        setViewControllers([initialVc], direction: .forward, animated: false, completion: nil)
         tabControllerDelegate?.userScroll(to: initialVc, at: 0)
     }
     
