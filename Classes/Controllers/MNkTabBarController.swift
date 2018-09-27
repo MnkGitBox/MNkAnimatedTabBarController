@@ -138,7 +138,7 @@ open class MNkTabBarController: UIViewController {
     public func setTabBar(hide isHide:Bool,animated isAnimated:Bool){
         
         let _tabBarAnimatedOriginY = isHide ? (tabBarFrame.origin.y + tabBarFrame.size.height) : tabBarFrame.origin.y
-        let _containerFrame = isHide ? CGRect(origin: .zero, size: CGSize(width: containerFrame.size.width, height: containerFrame.size.height + tabBarFrame.size.height)) : containerFrame
+        let _containerFrame = isHide ? CGRect(origin: .zero, size: CGSize(width: containerFrame.size.width, height: (containerFrame.size.height + tabBarFrame.size.height) - self.view.safeAreaInsets.bottom)) : containerFrame
         
         let animateTime:Double = isAnimated ? 0.4 : 0.0
         
