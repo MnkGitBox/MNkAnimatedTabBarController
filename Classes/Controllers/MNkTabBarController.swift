@@ -22,14 +22,17 @@ public var animatedTabBarController:MNkTabBarController?
 
 open class MNkTabBarController: UIViewController {
     
+    ///Frame of tab bar
     public var tabbarHeight:CGFloat{
         return statusBarHeight == 20 ? 55 : 80
     }
     
+    ///Frame of tab view controllers container
     public var containerFrame:CGRect{
         return CGRect(origin: .zero, size: CGSize(width: self.view.bounds.size.width,
                                                   height: self.view.bounds.size.height - tabbarHeight))
     }
+    
     
     private var tabBarFrame:CGRect{
         let origin = CGPoint(x: 0,
@@ -39,30 +42,37 @@ open class MNkTabBarController: UIViewController {
                                    height: tabbarHeight))
     }
     
+    private var statusBarHeight:CGFloat{
+        return UIApplication.shared.statusBarFrame.size.height
+    }
+    
     public var selectedVCIndex:Int = 0{
         willSet{
             guard selectedVCIndex != newValue else{return}
             removeAllChilds()
-            setToCurrent(mnkTabBarViewControllers[newValue])
         }
     }
     
-    private var isSetInitPage = false
     
+    ///Set view controllers to show in tabs
     public var mnkTabBarViewControllers:[UIViewController] = []
-    
-    private var statusBarHeight:CGFloat{
-        return UIApplication.shared.statusBarFrame.size.height
-    }
     
     private lazy var container:TabPageContainer = {
         let con = TabPageContainer(frame: containerFrame)
         return con
     }()
     
+    ///Tab bar view
     public lazy var tabBar:MNkTabBar = {
         let con = MNkTabBar(frame: tabBarFrame)
         return con
+    }()
+    
+    private lazy var tabPageController:MenuTabsViewController = {
+        let tvc = MenuTabsViewController(containerFrame,transitionStyle: .scroll, navigationOrientation: .horizontal)
+        tvc.tabPageViewControllers = self.mnkTabBarViewControllers
+        tvc.tabControllerDelegate = self
+        return tvc
     }()
     
     public init(){
@@ -84,7 +94,7 @@ open class MNkTabBarController: UIViewController {
         
         setSubViewControllers()
         
-        setSelectedVC(at: 0)
+        addControllerComp(tabPageController, to: container)
         
         animatedTabBar = tabBar
         animatedTabBarController = self
@@ -114,25 +124,14 @@ open class MNkTabBarController: UIViewController {
         
         guard mnkTabBarViewControllers.count > index else{return}
         
-        if isSetInitPage{
-            selectedVCIndex = index
-        }else{
-            setToCurrent(mnkTabBarViewControllers[index])
-            isSetInitPage = true
-        }
-        
+        let navigationDirection:UIPageViewControllerNavigationDirection = tabPageController.beforeSelectedIndex > index ? UIPageViewControllerNavigationDirection.reverse : .forward
+        tabPageController.setViewControllers([tabPageController.tabPageViewControllers[index]], direction: navigationDirection, animated: true, completion: nil)
+        tabPageController.beforeSelectedIndex = index
         
         tabBar.setActivateTabButton(at: index)
         
     }
     
-    private func setToCurrent(_ vc:UIViewController){
-        addControllerComp(vc, to: container)
-    }
-    
-    private func removeCurrent(_ vc:UIViewController){
-        vc.removeFromParentVC()
-    }
     
     ///Set tab bar show or hide.
     public func setTabBar(hide isHide:Bool,animated isAnimated:Bool){
@@ -157,32 +156,8 @@ extension MNkTabBarController:MNkButtonDelegate{
     }
 }
 
-extension UIViewController{
-    //MARK:- ADD MAIN VIEW CONTROLLERS AS CHILD VIEW CONTROLLERS TO MAIN VIEW CONTROLLER
-    func addControllerComp(_ controller:UIViewController,to container:UIView){
-        
-        addChildViewController(controller)
-        
-        container.addSubview(controller.view)
-        controller.view.frame = container.bounds
-        controller.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        
-        controller.didMove(toParentViewController: self)
+extension MNkTabBarController:MenuTabsViewControllerDelegate{
+    func userScroll(to viewController: UIViewController, at index: Int) {
+        tabBar.setActivateTabButton(at: index)
     }
-    
-    func removeFromParentVC(){
-        self.dismiss(animated: false, completion: nil)
-        self.willMove(toParentViewController: nil)
-        self.view.removeFromSuperview()
-        self.removeFromParentViewController()
-    }
-    
-    func removeAllChilds(){
-        for child in childViewControllers{
-            child.removeFromParentVC()
-        }
-    }
-    
 }
-
-

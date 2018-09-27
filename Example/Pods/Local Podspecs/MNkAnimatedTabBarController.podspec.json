@@ -1,6 +1,6 @@
 {
   "name": "MNkAnimatedTabBarController",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "summary": "iOS Tab bar controller with animated button",
   "description": "Custom created tab bar controller with animated button.if you want to static button with no aniamtion you still can do it with this simple libbary. you have to do programatically way un till to developed story board version.",
   "homepage": "https://github.com/MnkGitBox/MNkAnimatedTabBarController",
@@ -13,12 +13,13 @@
   },
   "source": {
     "git": "https://github.com/MnkGitBox/MNkAnimatedTabBarController.git",
-    "tag": "0.1.0"
+    "tag": "0.2.2"
   },
   "platforms": {
     "ios": "11.0"
   },
-  "source_files": "MNkAnimatedTabBarController/Classes/**/*",
+  "source_files": "Classes/**/*",
+  "swift_version": "4.0",
   "frameworks": "UIKit",
   "dependencies": {
     "lottie-ios": [
