@@ -19,24 +19,18 @@ class MenuTabsViewController: UIPageViewController {
     
     var tabControllerDelegate:MenuTabsViewControllerDelegate?
     
-    init(_ frame:CGRect,transitionStyle style: UIPageViewControllerTransitionStyle,navigationOrientation: UIPageViewControllerNavigationOrientation) {
-        super.init(transitionStyle:style, navigationOrientation: navigationOrientation, options: [:])
-        self.view.frame = frame
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
+        setInitialLoad()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private func setInitialLoad(){
         guard let initialVc = tabPageViewControllers.first else{return}
         setViewControllers([initialVc], direction: .forward, animated: false, completion: nil)
         tabControllerDelegate?.userScroll(to: initialVc, at: 0)
     }
-    
     
 }
 

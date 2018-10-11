@@ -22,6 +22,13 @@ public var animatedTabBarController:MNkTabBarController?
 
 open class MNkTabBarController: UIViewController {
     
+    ///Check tab bar currently hide or not
+    public var isTabBarHide:Bool{
+        return  _isTabBarHide
+    }
+    
+    private var _isTabBarHide:Bool = false
+    
     ///User can scroll between tabs just swiping.
     public var isScrollableTabs:Bool = true{
         didSet{
@@ -36,7 +43,7 @@ open class MNkTabBarController: UIViewController {
     
     ///Animate changing tabs when user tapped tab bar menu item
     public var isSwitchBetweenTabsAnimatable:Bool = true
-
+    
     
     ///Frame of tab bar
     public var tabbarHeight:CGFloat{
@@ -85,7 +92,7 @@ open class MNkTabBarController: UIViewController {
     }()
     
     private lazy var tabPageController:MenuTabsViewController = {
-        let tvc = MenuTabsViewController(containerFrame,transitionStyle: .scroll, navigationOrientation: .horizontal)
+        let tvc = MenuTabsViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         tvc.tabPageViewControllers = self.mnkTabBarViewControllers
         tvc.tabControllerDelegate = self
         return tvc
@@ -152,6 +159,10 @@ open class MNkTabBarController: UIViewController {
     
     ///Set tab bar show or hide.
     public func setTabBar(hide isHide:Bool,animated isAnimated:Bool){
+        
+        guard _isTabBarHide != isHide else {return}
+        
+        _isTabBarHide = isHide
         
         let _tabBarAnimatedOriginY = isHide ? (tabBarFrame.origin.y + tabBarFrame.size.height) : tabBarFrame.origin.y
         let _containerFrame = isHide ? CGRect(origin: .zero, size: CGSize(width: containerFrame.size.width, height: (containerFrame.size.height + tabBarFrame.size.height) - self.view.safeAreaInsets.bottom)) : containerFrame
