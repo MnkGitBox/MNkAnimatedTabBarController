@@ -51,7 +51,7 @@ public class MNkTabBarButton: UIView {
     }()
     
     private var imageView:UIImageView?
-    private var animationView:LOTAnimationView?
+    private var animationView:AnimationView?
     
     private lazy var pageTitleLabel:UILabel = {
         let lbl = UILabel()
@@ -154,9 +154,9 @@ public class MNkTabBarButton: UIView {
         switch type {
         case .animated:
             guard let animationName = titleResource as? String else{return}
-            animationView = LOTAnimationView(name: animationName)
+            animationView = AnimationView(name: animationName)
             animationView?.contentMode = .scaleAspectFit
-            animationView?.loopAnimation = false
+            animationView?.loopMode = .playOnce
             
             animationView?.translatesAutoresizingMaskIntoConstraints = false
             animationView?.heightAnchor.constraint(equalToConstant: tabBarButtonHeight).isActive = true
@@ -224,7 +224,7 @@ public class MNkTabBarButton: UIView {
             
             guard isActive else{
                 if _animationView.isAnimationPlaying{_animationView.stop()}
-                _animationView.animationProgress = 0
+                _animationView.currentProgress = 0
                 break
             }
             

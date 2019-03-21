@@ -1,6 +1,6 @@
 PODS:
-  - lottie-ios (2.5.0)
-  - MNkAnimatedTabBarController (0.2.2):
+  - lottie-ios (3.0.1)
+  - MNkAnimatedTabBarController (0.2.2.3):
     - lottie-ios
 
 DEPENDENCIES:
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
-  MNkAnimatedTabBarController: 3dbd85aa175cd92b2d7302e4f7fffe48d19d8add
+  lottie-ios: 8477cb83466c00cb4d29966f78d85e64cd9132df
+  MNkAnimatedTabBarController: f34ecfb7e2eae36b07c4d239bae0d0398cbc5b62
 
 PODFILE CHECKSUM: c9b5e02bc7db28bed3b2a81a3f4ddbd37f480124
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
