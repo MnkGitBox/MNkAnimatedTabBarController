@@ -20,6 +20,11 @@ import UIKit
 public var animatedTabBar:MNkTabBar?
 public var animatedTabBarController:MNkTabBarController?
 
+protocol MNkTabbarDelegate{
+    var isTabbarHidden:Bool{get set}
+}
+
+
 open class MNkTabBarController: UIViewController {
     
     ///Check tab bar currently hide or not
@@ -30,9 +35,8 @@ open class MNkTabBarController: UIViewController {
     private var _isTabBarHide:Bool = false
     
     ///User can scroll between tabs just swiping.
-    public var isScrollableTabs:Bool = true{
+    public var isScrollableTabs:Bool = false{
         didSet{
-            
             let delegate = isScrollableTabs ? tabPageController : nil
             let dataSource = isScrollableTabs ? tabPageController : nil
             
@@ -42,7 +46,7 @@ open class MNkTabBarController: UIViewController {
     }
     
     ///Animate changing tabs when user tapped tab bar menu item
-    public var isSwitchBetweenTabsAnimatable:Bool = true
+    public var isSwitchBetweenTabsAnimatable:Bool = false
     
     
     ///Frame of tab bar

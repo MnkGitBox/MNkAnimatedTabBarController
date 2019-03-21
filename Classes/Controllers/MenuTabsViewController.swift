@@ -21,8 +21,6 @@ class MenuTabsViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = self
-        self.delegate = self
         setInitialLoad()
     }
     
